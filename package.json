@@ -1,0 +1,16 @@
+{
+  "name": "finish-lines",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Finish Lines: a static deadline-countdown PWA. No build step; npm is for dev tests only.",
+  "type": "module",
+  "scripts": {
+    "serve": "node tests/serve.mjs 8080",
+    "test:unit": "node --test tests/unit.test.mjs",
+    "test:e2e": "node tests/e2e.cjs",
+    "test": "npm run test:unit && npm run test:e2e"
+  },
+  "devDependencies": {
+    "playwright": "^1.50.0"
+  }
+}
