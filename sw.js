@@ -2,7 +2,7 @@
 // Each release owns one versioned cache, filled completely at install. A new version waits until the
 // user taps "Reload to update", so a page is never served half old / half new files.
 
-const VERSION = '1.0.0';
+const VERSION = '1.0.1';
 const PREFIX = 'finish-lines-shell-';
 const CACHE = PREFIX + VERSION;
 

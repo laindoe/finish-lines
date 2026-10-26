@@ -9,7 +9,7 @@ import { formatShort } from './time.js';
 import { roadView, finishedView, settingsView, detailView, formView, bottomNav,
   alarmSheet, completionSheet, confirmSheet } from './views.js';
 
-const VERSION = '1.0.0';
+const VERSION = '1.0.1';
 const params = new URLSearchParams(location.search);
 const demo = params.get('demo');
 const KEY = demo ? 'finish-lines:demo:v1' : STORAGE_KEY;
