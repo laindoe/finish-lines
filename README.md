@@ -42,7 +42,7 @@ The app is the repository root; there is nothing to build.
 
 This is a static page. **No alarm or push notification is promised while Safari is suspended, the app is closed, or the phone is locked.** The service worker only caches the app shell; it is not a scheduler.
 
-- A *Finish Line Alert* plays a short Web Audio chime (repeating, max 20 s) **only while the app is open and visible**, and only after sound has been unlocked by a tap (Enable sound / Test sound / turning the alert on / saving with the alert on). After a reload sound is locked again; a "tap to enable" chip appears on the Road, and Settings states the real status.
+- A *Finish Line Alert* plays a short Web Audio chime (repeating, max 20 s) **only while the app is open and visible**, and only after sound has been unlocked by a tap (Enable sound / Test sound / turning the alert on / saving with the alert on). After a reload sound is locked again until your first tap anywhere in the app (it unlocks quietly); Settings states the real status.
 - Each alert fires once per record + deadline revision. Refreshing doesn't repeat it; editing the deadline cancels the old event; past deadlines never ring retroactively; simultaneous deadlines queue instead of overlapping.
 - If the deadline passed while the app was away, you get a quiet banner once and the counter shows accurate overtime.
 - iPhone's Ring/Silent switch silences Web Audio. Keep the screen awake.

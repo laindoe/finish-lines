@@ -143,15 +143,6 @@ export function roadView(app) {
   const range = formatRange(recs.map((r) => r.deadlineAt), data.settings.defaultTimeZone);
   const root = h('div', { class: 'view road-view' }, pageHeader(app, { title: 'FINISH LINES', subtitle: range }));
 
-  const chip = h('button', { type: 'button', class: 'sound-chip', hidden: true, onClick: () => app.actions.unlockSound() },
-    icon('bellOff'), 'Sound locked this session — tap to enable');
-  const paintChip = () => {
-    const needs = recs.some((r) => r.alertEnabled) && app.audio.status === 'locked';
-    chip.hidden = !needs;
-  };
-  paintChip(); app.audioHooks.add(paintChip);
-  root.append(chip);
-
   if (!recs.length) {
     root.append(h('section', { class: 'empty', 'aria-labelledby': 'empty-title' },
       h('div', { class: 'road empty-road', 'aria-hidden': 'true' }, h('div', { class: 'track' }, h('div', { class: 'dashes' }), h('div', { class: 'flag', style: `left:${pct(FLAG_POSITION)}` })), h('div', { class: 'lane' }, h('div', { class: 'orb', style: 'left:0%' }))),

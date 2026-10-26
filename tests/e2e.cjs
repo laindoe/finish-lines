@@ -123,9 +123,10 @@ const step = async (name, fn) => {
   });
 
   await step('alert fires once in-session, sheet shown, overtime continues, refresh does not repeat', async () => {
-    assert.ok(await page.isVisible('.sound-chip'), 'locked-sound hint shown after reload');
-    await page.click('.sound-chip');                 // user activation unlocks audio
-    await page.waitForSelector('.sound-chip', { state: 'hidden' });
+    assert.equal(await page.locator('.sound-chip').count(), 0, 'no lock warning');
+    await page.click('h1');                          // any tap unlocks sound quietly
+    await page.waitForFunction(() => __FL.audio.status === 'ready');
+    assert.equal(await page.evaluate(() => __FL.audio.status), 'ready');
     await page.clock.runFor(61_000);
     await page.waitForSelector('.sheet.alarm');
     assert.match(await page.textContent('.sheet.alarm .big-count'), /^\+\d\d:\d\d:\d\d$/);

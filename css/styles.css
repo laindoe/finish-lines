@@ -63,8 +63,6 @@ svg { display: block; }
 .toast { position: fixed; left: 50%; transform: translateX(-50%); top: calc(env(safe-area-inset-top, 0px) + 10px); z-index: 60; width: min(92vw, 520px);
   background: #101214; border: 1px solid var(--fg); padding: 12px 16px; font-size: 15px; text-align: center; }
 
-.sound-chip { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 44px; margin: 0 0 14px; padding: 8px 12px; background: none; color: var(--yellow); border: 1px dashed var(--yellow); font: 600 15px var(--body); }
-.sound-chip svg { width: 22px; height: 22px; flex: none; }
 
 /* ---------- Buttons ---------- */
 .btn, .btn-add, .btn-mark {

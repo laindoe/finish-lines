@@ -9,7 +9,7 @@ import { formatShort } from './time.js';
 import { roadView, finishedView, settingsView, detailView, formView, bottomNav,
   alarmSheet, completionSheet, confirmSheet } from './views.js';
 
-const VERSION = '1.0.1';
+const VERSION = '1.0.2';
 const params = new URLSearchParams(location.search);
 const demo = params.get('demo');
 const KEY = demo ? 'finish-lines:demo:v1' : STORAGE_KEY;
@@ -211,10 +211,6 @@ A.setSettings = (partial) => {
   return res;
 };
 
-A.unlockSound = async () => {
-  const ok = await app.audio.unlock();
-  toast(ok ? 'Sound enabled for this session.' : 'Sound is still blocked. Try Test sound in Settings.');
-};
 
 A.exportBackup = () => {
   try {
@@ -394,6 +390,13 @@ function registerSW() {
     });
   }).catch(() => { /* offline support unavailable; the app itself still works */ });
 }
+
+/* Any first tap is a real user activation: quietly unlock sound so a later alert can be heard. */
+const quietUnlock = () => {
+  if (app.audio.enabled && app.audio.status === 'locked') app.audio.unlock();
+  if (app.audio.status !== 'locked') document.removeEventListener('pointerup', quietUnlock, true);
+};
+document.addEventListener('pointerup', quietUnlock, true);
 
 /* ---------- boot ---------- */
 applyMotion();
