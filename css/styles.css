@@ -104,7 +104,7 @@ svg { display: block; }
 .clock[data-state="yellow"] { color: var(--yellow); }
 .clock[data-state="red"] { color: var(--red); }
 .clock .count-label { color: inherit; }
-.btn-mark { position: relative; z-index: 2; flex: none; margin-left: auto; min-height: 52px; padding: 8px 10px; font-size: 15px; gap: 6px; letter-spacing: .03em; text-align: left; }
+.btn-mark { width: 60px; padding: 0 !important; position: relative; z-index: 2; flex: none; margin-left: auto; min-height: 52px; padding: 8px 10px; font-size: 15px; gap: 6px; letter-spacing: .03em; text-align: left; }
 .result { font: 600 20px/1.2 var(--display); letter-spacing: .03em; margin-top: 6px; }
 .result.late, .done-result.late, .sheet-result.late, .info-row.late .v { color: var(--red); }
 .result.early, .done-result.early, .sheet-result.early, .info-row.early .v { color: var(--cyan); }
@@ -275,3 +275,4 @@ select { -webkit-appearance: none; appearance: none; background-image: linear-gr
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
 .reduce-motion *, .reduce-motion *::before, .reduce-motion *::after { animation: none !important; transition: none !important; }
+.btn-mark svg { width: 30px; height: 30px; }

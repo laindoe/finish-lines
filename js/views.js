@@ -128,7 +128,7 @@ export function billboard(app, rec, { detail = false } = {}) {
   const foot = h('div', { class: 'board-foot' });
   if (content.clock) foot.append(content.clock);
   if (rec.completedAt === null && !detail) {
-    foot.append(h('button', { type: 'button', class: 'btn-mark', onClick: () => app.actions.finish(rec.id) }, 'Mark finished ', icon('check')));
+    foot.append(h('button', { type: 'button', class: 'btn-mark', 'aria-label': `Mark finished: ${rec.title}`, onClick: () => app.actions.finish(rec.id) }, icon('check')));
   }
   const board = h('div', { class: 'board' }, ...content.nodes, content.badge, foot);
   return h('article', { class: `line${detail ? ' detail' : ''}${rec.completedAt !== null ? ' is-done' : ''}`, 'data-id': rec.id },
