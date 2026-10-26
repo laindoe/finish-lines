@@ -180,7 +180,7 @@ const step = async (name, fn) => {
     assert.equal(await page.evaluate(() => __FL.audio.stats.alarmsStarted), before + 1, 'only one alarm active');
     assert.equal(await page.evaluate(() => __FL.queue.length), 1, 'second one queued');
     const first = await page.textContent('.sheet .sheet-project');
-    await page.click('.sheet >> text=Mark finished');
+    await page.click('.sheet button[aria-label^="Mark finished"]');
     await page.waitForSelector('.sheet.done');
     assert.equal(await page.evaluate(() => __FL.audio.alarming), false, 'sound stopped on completion');
     await shot(page, '06-finished-sheet');
@@ -202,7 +202,7 @@ const step = async (name, fn) => {
     await shot(page, '08-saved-result', true);
     const before = await page.evaluate(() => __FL.audio.stats.alarmsStarted);
     await page.click('text=Undo completion');
-    await page.waitForSelector('button:has-text("Mark finished")');
+    await page.waitForSelector('button[aria-label^="Mark finished"]');
     await page.clock.runFor(5000);
     assert.equal(await page.locator('.sheet').count(), 0);
     assert.equal(await page.evaluate(() => __FL.audio.stats.alarmsStarted), before);

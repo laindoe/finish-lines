@@ -225,7 +225,7 @@ export function detailView(app, id) {
         row('globe', 'Time zone', r.timeZone),
         row('bell', 'Alert', alertStatusText(r))),
       h('div', { class: 'actions' },
-        h('button', { type: 'button', class: 'btn primary', onClick: () => app.actions.finish(r.id) }, icon('check'), 'Mark finished'),
+        h('button', { type: 'button', class: 'btn primary', 'aria-label': `Mark finished: ${r.title}`, onClick: () => app.actions.finish(r.id) }, icon('check')),
         h('a', { class: 'btn', href: `#/edit/${encodeURIComponent(r.id)}` }, 'Edit')));
   } else {
     const res = resultOf(r);
@@ -442,7 +442,7 @@ export function alarmSheet(app, rec, { onDismiss, onFinish }) {
     h('p', { id: 'sheet-desc', class: 'sheet-sub' }, 'Your finish line has passed.'),
     note,
     dismiss,
-    h('button', { type: 'button', class: 'btn', onClick: onFinish }, 'Mark finished'));
+    h('button', { type: 'button', class: 'btn', 'aria-label': `Mark finished: ${rec.title}`, onClick: onFinish }, icon('check')));
   return { el, focus: dismiss };
 }
 
